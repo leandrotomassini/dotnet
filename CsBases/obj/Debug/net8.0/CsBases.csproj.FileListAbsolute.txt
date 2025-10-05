@@ -1,0 +1,15 @@
+D:\Repositories\dotnet\CsBases\bin\Debug\net8.0\CsBases.exe
+D:\Repositories\dotnet\CsBases\bin\Debug\net8.0\CsBases.deps.json
+D:\Repositories\dotnet\CsBases\bin\Debug\net8.0\CsBases.runtimeconfig.json
+D:\Repositories\dotnet\CsBases\bin\Debug\net8.0\CsBases.dll
+D:\Repositories\dotnet\CsBases\bin\Debug\net8.0\CsBases.pdb
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\CsBases.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\CsBases.AssemblyInfoInputs.cache
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\CsBases.AssemblyInfo.cs
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\CsBases.csproj.CoreCompileInputs.cache
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\CsBases.sourcelink.json
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\CsBases.dll
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\refint\CsBases.dll
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\CsBases.pdb
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\CsBases.genruntimeconfig.cache
+D:\Repositories\dotnet\CsBases\obj\Debug\net8.0\ref\CsBases.dll

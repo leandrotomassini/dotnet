@@ -1,44 +1,86 @@
 # .NET Projects Repository
 
-This repository contains a collection of .NET projects developed by ltomassini.
+A personal repository for .NET projects by ltomassini.
 
-## Projects
+## Projects Overview
 
-### 1. ApiEcommerce
+This repository is organized into two main projects:
 
-A complete e-commerce RESTful API developed with ASP.NET Core 8. This project serves as a backend solution for an e-commerce platform, managing products, orders, and customers.
+1.  **`ApiEcommerce`**: A comprehensive RESTful API for an e-commerce platform built with ASP.NET Core 8.
+2.  **`CsBases`**: A collection of C# examples covering fundamental concepts and design patterns.
 
-**Features:**
-*   RESTful architecture
-*   Entity Framework Core for data access
-*   Repository pattern for data abstraction
-*   Docker support for containerization
+---
 
-**Getting Started:**
+## 1. ApiEcommerce
 
-To run this project, you can use Docker Compose:
+This project provides the backend services for a typical e-commerce application.
+
+### Core Technologies
+*   **.NET 8** / **ASP.NET Core 8**
+*   **Entity Framework Core 8**: For data access and object-relational mapping (ORM).
+*   **SQL Server**: As the database provider for EF Core.
+*   **AutoMapper**: For object-to-object mapping (e.g., entities to DTOs).
+*   **Swashbuckle (Swagger)**: For API documentation and testing.
+*   **Docker**: For containerization and simplified deployment.
+
+### Project Structure
+*   `Controllers/`: Contains the API endpoints for `Products` and `Categories`.
+*   `Data/`: Includes the `ApplicationDbContext` for database interaction.
+*   `Models/`: Defines the core domain entities (`Product`, `Category`) and Data Transfer Objects (DTOs).
+*   `Repository/`: Implements the repository pattern to decouple the business logic from the data access layer.
+*   `Mapping/`: Contains AutoMapper profiles for DTO transformations.
+*   `Migrations/`: EF Core database migration files.
+
+### API Endpoints
+
+The API exposes standard CRUD endpoints for `Products` and `Categories`. These can be explored in detail via the Swagger UI, typically available at `/swagger` when the application is running.
+
+### Getting Started
+
+#### Prerequisites
+*   .NET 8 SDK
+*   Docker Desktop (optional, for containerized approach)
+*   A SQL Server instance (if not using Docker)
+
+#### Running with Docker
+The easiest way to get the application and a database running is with Docker Compose.
+
 ```bash
-docker-compose up -d
+# From the ApiEcommerce directory
+docker-compose up --build -d
 ```
 
-Alternatively, you can run it directly using the .NET CLI from the `ApiEcommerce/ApiEcommerce` directory:
-```bash
-dotnet run
-```
+#### Running Locally
+1.  Ensure you have a SQL Server instance accessible.
+2.  Configure the database connection string in `ApiEcommerce/ApiEcommerce/appsettings.json`.
+3.  Apply the database migrations to create the schema.
+    ```bash
+    # Navigate to the directory containing the .sln file: ApiEcommerce/
+    dotnet ef database update --project ApiEcommerce/ApiEcommerce
+    ```
+4.  Run the application.
+    ```bash
+    # Navigate to ApiEcommerce/ApiEcommerce
+    dotnet run
+    ```
+The API will be available at the URLs specified in `Properties/launchSettings.json` (e.g., `https://localhost:7181`).
 
-### 2. CsBases
+---
 
-This project is a collection of C# code examples demonstrating fundamental programming concepts and design patterns. It's structured into different folders, each focusing on a specific topic.
+## 2. CsBases
 
-**Topics Covered:**
-*   Basic Data Types (`02-Tipos-Basicos`)
-*   Inheritance (`04-Herencia`)
-*   Adapter Pattern (`05-Patron-adaptador`)
-*   Dependency Injection (`06-Inyeccion-de-dependencias`)
-*   Asynchronous Methods (`07-Metodos-Asyncronos`)
-*   Attributes (`08-Atributos`)
+A curated collection of code snippets and small projects demonstrating key C# and .NET concepts. This project is intended for educational and reference purposes.
 
-This project is excellent for learning and reviewing core C# concepts.
+### Topics Covered
+*   **`02-Tipos-Basicos`**: Overview of fundamental C# data types.
+*   **`04-Herencia`**: Example of class inheritance and interfaces.
+*   **`05-Patron-adaptador`**: Implementation of the Adapter design pattern.
+*   **`06-Inyeccion-de-dependencias`**: Demonstration of Dependency Injection (DI).
+*   **`07-Metodos-Asyncronos`**: Working with `async` and `await` for asynchronous operations.
+*   **`08-Atributos`**: Creating and using custom attributes.
+
+### How to Use
+Each folder is a self-contained example. You can explore the code in each directory to understand the specific concept. The `Program.cs` in the root of `CsBases` may contain entry points to run or test some of these examples.
 
 ---
 *ltomassini*

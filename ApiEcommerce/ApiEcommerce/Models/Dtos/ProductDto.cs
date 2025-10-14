@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 
 namespace ApiEcommerce.Models.Dtos
 {
@@ -25,5 +26,8 @@ namespace ApiEcommerce.Models.Dtos
         public DateTime? UpdateDate { get; set; } = null;
 
         public int CategoryId { get; set; }
+
+        public string CategoryName { get; set; } = string.Empty;
+
     }
 }

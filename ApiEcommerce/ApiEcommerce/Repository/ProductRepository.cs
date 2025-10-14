@@ -1,5 +1,6 @@
 ﻿using ApiEcommerce.Models;
 using ApiEcommerce.Repository.IRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiEcommerce.Repository
 {
@@ -70,12 +71,12 @@ namespace ApiEcommerce.Repository
                 return null;
             }
 
-            return _db.Products.FirstOrDefault(p => p.ProductId == id);
+            return _db.Products.Include(p => p.category).FirstOrDefault(p => p.ProductId == id);
         }
 
         public ICollection<Product> GetProducts()
         {
-            return _db.Products.OrderBy(p => p.name).ToList();
+            return _db.Products.Include(p => p.category).OrderBy(p => p.name).ToList();
         }
 
         public ICollection<Product> GetProductsForCategory(int categoryId)
@@ -85,7 +86,7 @@ namespace ApiEcommerce.Repository
                 return new List<Product>();
             }
 
-            return _db.Products.Where(p => p.CategoryId == categoryId).OrderBy(p => p.name).ToList();
+            return _db.Products.Include(p => p.category).Where(p => p.CategoryId == categoryId).OrderBy(p => p.name).ToList();
         }
 
         public bool ProductExists(int id)
@@ -113,14 +114,22 @@ namespace ApiEcommerce.Repository
             return _db.SaveChanges() >= 0 ? true : false;
         }
 
-        public ICollection<Product>? SearchProduct(string name)
+        public ICollection<Product>? SearchProducts(string searchTerm)
         {
             IQueryable<Product> query = _db.Products;
 
-            if (!string.IsNullOrEmpty(name))
+            var saerchTermLower = searchTerm.ToLower().Trim();
+
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                query = query.Where(p => p.name.ToLower().Trim() == p.name.ToLower().Trim());
+                query = query
+                    .Include(p => p.category)
+                    .Where(p =>
+                        p.name.ToLower().Trim().Contains(saerchTermLower) ||
+                        p.Description.ToLower().Trim().Contains(saerchTermLower)
+                    );
             }
+
 
             return query.OrderBy(p => p.name).ToList();
         }

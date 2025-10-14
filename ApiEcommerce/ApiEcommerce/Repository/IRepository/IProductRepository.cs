@@ -8,7 +8,7 @@ namespace ApiEcommerce.Repository.IRepository
 
         ICollection<Product> GetProductsForCategory(int categoryId);
 
-        ICollection<Product>? SearchProduct(string name);
+        ICollection<Product>? SearchProducts(string searchTerm);
     
         Product? GetProduct(int id);
 

@@ -9,7 +9,7 @@ namespace ApiEcommerce.Models.Dtos
 
         public required string Username { get; set; }
 
-        public required string Pasword { get; set; }
+        public required string Password { get; set; }
 
         public string? Name { get; set; }
 
